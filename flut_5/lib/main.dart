@@ -7,8 +7,11 @@ class MyApp extends StatelessWidget {
   return MaterialApp(
     debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: FaceContact(),
-      ),
+        body: Column([
+          children: Row(FaceContact());
+          children: Row(Form());
+        ]),
+        ),
   );
   }
 }
@@ -47,7 +50,17 @@ class FaceContact extends StatelessWidget {
 
 
 // Блок контактов
+class FormContact extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => FormContactState()
+}
 
-
+class FormContactState extends State {
+  final _formKey = GlobalKey<FormContactState>();
+  
+  Widget build(BuildContext context) {
+    return Form(child: Column(), key: _formKey);
+  }
+}
 
 // Блок навигации
