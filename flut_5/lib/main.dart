@@ -6,12 +6,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
   return MaterialApp(
     debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Column([
-          children: Row(FaceContact());
-          children: Row(Form());
-        ]),
-        ),
+      home: ListView(
+        children: <Widget>[
+          FaceContact(),
+          Container(
+            height: 50,
+            color: Colors.white,
+            padding: const EdgeInsets.all(5.0),
+            child: FormContact(),),
+
+        ],
+      ),
   );
   }
 }
@@ -52,14 +57,28 @@ class FaceContact extends StatelessWidget {
 // Блок контактов
 class FormContact extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => FormContactState()
+  State<StatefulWidget> createState() => FormContactState();
 }
 
 class FormContactState extends State {
   final _formKey = GlobalKey<FormContactState>();
   
   Widget build(BuildContext context) {
-    return Form(child: Column(), key: _formKey);
+    return Container(
+        padding: EdgeInsets.all(10.0),
+        child: Form(
+            key: _formKey,
+            child: Column(children: <Widget>[
+                Text('NAME:', style: TextStyle(fontSize: 20.0),),
+                TextFormField(validator: (value){
+                    if (value.isEmpty)
+                      return 'Пожалуйста введите свое имя';
+                    }
+                    ),
+                SizedBox(height: 20.0)
+    ]),
+    ),
+    );
   }
 }
 
