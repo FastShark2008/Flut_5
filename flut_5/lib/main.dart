@@ -54,18 +54,20 @@ class TitleContact extends StatelessWidget {
       color: Colors.white,
       padding: EdgeInsets.all(20.0),
       child: Row(children: <Widget>[
-        Expanded(child:
-          Column(
+        Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text('Имя Отчество Фамилия',
-              overflow: TextOverflow.visible,
+              softWrap: true,
+              textAlign: TextAlign.center,
               style: TextStyle(
                   fontWeight: FontWeight.w100,
                   color: Colors.black,
                   fontSize: 25.0),
               ),
               Text('краткое описание',
+              softWrap: true,
+              textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 15.0,
                 color: Colors.grey
@@ -73,9 +75,14 @@ class TitleContact extends StatelessWidget {
               ),
             ],
           ),
-        )
-      ],),
-    );
+        Column(children: <Widget>[
+            Icon(Icons.star, color: Colors.red,),
+        ],
+          crossAxisAlignment: CrossAxisAlignment.end,
+        ),
+        ],
+        ),
+        );
   }
 }
 
