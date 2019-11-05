@@ -9,11 +9,8 @@ class MyApp extends StatelessWidget {
       home: ListView(
         children: <Widget>[
           FaceContact(),
-          Container(
-            height: 50,
-            color: Colors.white,
-            padding: const EdgeInsets.all(5.0),
-            child: FormContact(),),
+          TitleContact(),
+
 
         ],
       ),
@@ -51,6 +48,36 @@ class FaceContact extends StatelessWidget {
 
 
 // Блок наименование контакта
+class TitleContact extends StatelessWidget {
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.white,
+      padding: EdgeInsets.all(20.0),
+      child: Row(children: <Widget>[
+        Expanded(child:
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text('Имя Отчество Фамилия',
+              overflow: TextOverflow.visible,
+              style: TextStyle(
+                  fontWeight: FontWeight.w100,
+                  color: Colors.black,
+                  fontSize: 25.0),
+              ),
+              Text('краткое описание',
+              style: TextStyle(
+                fontSize: 15.0,
+                color: Colors.grey
+                ),
+              ),
+            ],
+          ),
+        )
+      ],),
+    );
+  }
+}
 
 
 
