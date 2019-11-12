@@ -1,20 +1,25 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-  return MaterialApp(
+  return CupertinoApp(
     debugShowCheckedModeBanner: false,
-      home: ListView(
-        children: <Widget>[
-          FaceContact(),
-          TitleContact(),
+      home: Container(
+        color: Colors.white,
+          child: ListView(
+          children: <Widget>[
+            FaceContact(),
+            TitleContact(),
+            FormContact(),
 
 
-        ],
+          ],
+        ),
       ),
-  );
+    );
   }
 }
 
@@ -37,7 +42,7 @@ class FaceContact extends StatelessWidget {
     //    )]
     // ),
 
-    color: Colors.black,
+    color: Colors.white,
     padding: EdgeInsets.all(0.0),
     width: double.infinity,
     height: 350,
@@ -55,25 +60,24 @@ class TitleContact extends StatelessWidget {
       padding: EdgeInsets.all(20.0),
       child: Row(children: <Widget>[
         Expanded(
-          flex: 3,
+          flex: 9,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text('Имя Отчество Фамилия',
+              Text('Флуттерова',
               softWrap: true,
               textAlign: TextAlign.left,
-              style: TextStyle(
-                  fontWeight: FontWeight.w100,
-                  color: Colors.black,
-                  fontSize: 25.0),
+              style: Theme.of(context).textTheme.subhead,
               ),
-              Text('краткое описание',
+              Text('Мария Дартовна',
+                softWrap: true,
+                textAlign: TextAlign.left,
+                style: Theme.of(context).textTheme.headline,
+              ),
+              Text('сексуальная штучка',
               softWrap: true,
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 15.0,
-                color: Colors.grey
-                ),
+              style: Theme.of(context).textTheme.caption,
               ),
             ],
           ),
@@ -81,7 +85,8 @@ class TitleContact extends StatelessWidget {
           Expanded(
             flex: 1,
             child: Column(children: <Widget>[
-              Icon(Icons.star, color: Colors.blue,),
+              Icon(Icons.favorite, color: Colors.red, size: 35,),
+              Text('In Love', textAlign: TextAlign.center,),
               ],
             ),
           ),
@@ -94,30 +99,28 @@ class TitleContact extends StatelessWidget {
 
 
 // Блок контактов
-class FormContact extends StatefulWidget {
+class FormContact extends StatelessWidget {
   @override
-  State<StatefulWidget> createState() => FormContactState();
-}
 
-class FormContactState extends State {
-  final _formKey = GlobalKey<FormContactState>();
-  
   Widget build(BuildContext context) {
-    return Container(
-        padding: EdgeInsets.all(10.0),
-        child: Form(
-            key: _formKey,
-            child: Column(children: <Widget>[
-                Text('NAME:', style: TextStyle(fontSize: 20.0),),
-                TextFormField(validator: (value){
-                    if (value.isEmpty)
-                      return 'Пожалуйста введите свое имя';
-                    }
-                    ),
-                SizedBox(height: 20.0)
-    ]),
-    ),
-    );
+    return Column(
+          children: <Widget>[
+          Card(
+            child: ListTile(
+              leading: Icon(Icons.phone_in_talk, color: Colors.blue),
+              title: Text('+7 909 789 67 77'),
+              trailing: Icon(Icons.more_vert),
+          ),
+        ),
+          Card(
+            child: ListTile(
+              leading: Icon(Icons.contact_mail, color: Colors.blue,),
+              title: Text('flutter.maria@dart.com'),
+              trailing: Icon(Icons.more_vert),
+            ),
+          )
+        ],
+      );
   }
 }
 
