@@ -54,12 +54,14 @@ class TitleContact extends StatelessWidget {
       color: Colors.white,
       padding: EdgeInsets.all(20.0),
       child: Row(children: <Widget>[
-        Column(
+        Expanded(
+          flex: 3,
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text('Имя Отчество Фамилия',
               softWrap: true,
-              textAlign: TextAlign.center,
+              textAlign: TextAlign.left,
               style: TextStyle(
                   fontWeight: FontWeight.w100,
                   color: Colors.black,
@@ -75,14 +77,17 @@ class TitleContact extends StatelessWidget {
               ),
             ],
           ),
-        Column(children: <Widget>[
-            Icon(Icons.star, color: Colors.red,),
+      ),
+          Expanded(
+            flex: 1,
+            child: Column(children: <Widget>[
+              Icon(Icons.star, color: Colors.blue,),
+              ],
+            ),
+          ),
         ],
-          crossAxisAlignment: CrossAxisAlignment.end,
-        ),
-        ],
-        ),
-        );
+      ),
+    );
   }
 }
 
